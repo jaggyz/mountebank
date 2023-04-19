@@ -1,0 +1,50 @@
+{
+    "port": 8000,
+    "protocol": "http",
+    "defaultResponse": {
+        "statusCode": 404,
+        "headers": {
+            "Connection": "Keep-Alive",
+            "Content-Length": 0
+        }
+    },
+    "stubs": [
+        {
+            "predicates": [
+                {
+                    "equals": {
+                        "method": "POST"
+                    }
+                },
+                {
+                    "equals": {
+                        "path": "/api/v1/product"
+                    }
+                },
+                {
+                    "jsonpath": { "selector": "$.product_name" },
+                    "caseSensitive": true,
+                    "equals": { "body": "robot" }
+                },
+                {
+                    "jsonpath": { "selector": "$.product_price" },
+                    "caseSensitive": true,
+                    "equals": { "body": 100 }
+                },
+                {
+                    "jsonpath": { "selector": "$.product_image" },
+                    "caseSensitive": true,
+                    "equals": { "body": "/robot.png" }
+                }
+            ],
+            "responses": [
+              {
+                "is": {
+                    "statusCode": 201,
+                    "headers": { "Content-Types": "application/json" }
+                }
+              }
+            ]
+        }
+    ]
+}

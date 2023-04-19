@@ -1,0 +1,30 @@
+{
+    "port": 8003,
+    "protocol": "http",
+    "defaultResponse": {
+        "statusCode": 404,
+        "headers": {
+          "Connection": "Keep-Alive",
+          "Content-Length": 0
+        }
+      },
+    "stubs": [
+      {
+        "predicates": [
+          { "equals": { "method": "GET" } },
+          { "equals": { "path": "/api/v1/product" } }
+        ],
+        "responses": [
+          {
+            "is": {
+              "statusCode": 200,
+              "headers": { "Content-Type": "application/json" },
+              "body": "<%- stringify(filename, 'products.json') %>"
+            }
+          }
+        ]
+      }        
+    ]
+  }   
+    
+  

@@ -1,0 +1,48 @@
+{
+    "port": 8000,
+    "protocol": "http",
+    "defaultResponse": {
+        "statusCode": 404,
+        "headers": {
+            "Connection": "Keep-Alive",
+            "Content-Length": 0
+        }
+      },
+    "stubs": [
+        {
+            "predicates": [
+                { 
+                    "equals": { 
+                        "method": "GET" 
+                    } 
+                },
+                { 
+                    "equals": { 
+                        "path": "/api/v1/product" 
+                    } 
+                },
+                {
+                    "equals": {
+                        "query": { "q": "robot" }
+                    }
+                }
+            ],
+            "responses": [
+                {
+                    "is": {
+                        "statusCode": 200,
+                        "headers": { "Content-Type": "application/json" },
+                        "body": {
+                            "id": 3,
+                            "product_name": "Alpha Bot",
+                            "product_price": 33.95,
+                            "product_image": "/Alpha Bot.png"
+                        }
+                    }
+                }
+            ]
+        }        
+    ]
+  }   
+    
+  
